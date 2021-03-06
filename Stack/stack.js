@@ -1,15 +1,14 @@
 class Stack {
   constructor(data) {
-    this.data = [...data];
     this.stack = [];
     this.top = -1;
     this.length = 10;
-    this.createStack();
+    this.createStack(data);
   }
 
-  createStack() {
-    if (Array.isArray(this.data)) {
-      this.stack = [...this.data];
+  createStack(data) {
+    if (Array.isArray(data)) {
+      this.stack = [...data];
       this.top = this.data.length;
     } else {
       throw new Error("Data needs to be an array/list.");
