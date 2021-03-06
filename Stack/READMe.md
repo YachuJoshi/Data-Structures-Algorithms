@@ -1,9 +1,9 @@
-### Stack
+## Stack
 
 - **Stack** is an abstract data structure with a bounded size.
 - It works in **Last In First Out(LIFO)** Principle: The most recent item to be added to the stack gets removed first.
 
-#### Basic Operations:
+### Basic Operations:
 
 - **Push:** Add an element to the top of the stack.
 - **Pop:** Remove an element from the top of the stack & return it.
