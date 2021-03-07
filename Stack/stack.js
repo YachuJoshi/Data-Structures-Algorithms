@@ -8,7 +8,7 @@ class Stack {
 
   createStack(data) {
     if (Array.isArray(data)) {
-      this.stack = [...data];
+      this.stack = [...data].filter((_, index) => index <= this.length - 1);
       this.top = this.stack.length - 1;
     } else {
       throw new Error("Data needs to be an array/list.");
