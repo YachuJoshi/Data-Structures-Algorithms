@@ -1,4 +1,4 @@
-class CircluarQueue {
+class CircularQueue {
   constructor(data) {
     this.queue = [];
     this.front = -1;
@@ -19,19 +19,21 @@ class CircluarQueue {
 
   enqueue(item) {
     if (!this.isFull()) {
-      this.queue.push(item);
-      this.rear++;
+      this.rear = (this.rear + 1) % this.length;
+      this.queue[this.rear] = item;
     } else {
-      throw new Error("Queue is full.");
+      throw new Error("Queue is full");
     }
   }
 
   dequeue() {
     if (!this.isEmpty()) {
-      this.front++;
-      return this.queue.shift();
+      const item = this.queue[this.front];
+      this.queue = [...this.queue.filter((_, index) => index !== this.front)];
+      this.front = (this.front + 1) % this.length;
+      return item;
     } else {
-      throw new Error("Queue is empty");
+      throw new Error("Queue is empty.");
     }
   }
 
@@ -40,7 +42,10 @@ class CircluarQueue {
   }
 
   isFull() {
-    return this.rear === this.length - 1;
+    return (
+      (this.front === 0 && this.rear === this.length - 1) ||
+      this.front === this.rear + 1
+    );
   }
 
   peek() {
@@ -57,5 +62,5 @@ class CircluarQueue {
 }
 
 module.exports = {
-  CircluarQueue,
+  CircularQueue,
 };
