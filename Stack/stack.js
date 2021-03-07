@@ -9,7 +9,7 @@ class Stack {
   createStack(data) {
     if (Array.isArray(data)) {
       this.stack = [...data];
-      this.top = this.data.length;
+      this.top = this.stack.length - 1;
     } else {
       throw new Error("Data needs to be an array/list.");
     }
@@ -20,7 +20,7 @@ class Stack {
   }
 
   isFull() {
-    return this.top >= this.length;
+    return this.top >= this.length - 1;
   }
 
   push(item) {
@@ -45,7 +45,7 @@ class Stack {
   }
 
   peek() {
-    return this.stack[this.top - 1];
+    return this.stack[this.top];
   }
 
   list() {

@@ -1,0 +1,22 @@
+{
+  "name": "data-structures-algorithm",
+  "version": "1.0.0",
+  "description": "Data Strucutre & Algorithms",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YachuJoshi/Data-Structures-Algorithms.git"
+  },
+  "author": "Yachu Joshi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YachuJoshi/Data-Structures-Algorithms/issues"
+  },
+  "homepage": "https://github.com/YachuJoshi/Data-Structures-Algorithms#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
