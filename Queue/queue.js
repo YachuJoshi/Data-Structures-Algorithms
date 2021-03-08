@@ -28,8 +28,10 @@ class Queue {
 
   dequeue() {
     if (!this.isEmpty()) {
+      const item = this.queue[this.front];
+      delete this.queue[this.front];
       this.front++;
-      return this.queue.shift();
+      return item;
     } else {
       throw new Error("Queue is empty");
     }

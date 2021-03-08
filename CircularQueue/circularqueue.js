@@ -29,7 +29,7 @@ class CircularQueue {
   dequeue() {
     if (!this.isEmpty()) {
       const item = this.queue[this.front];
-      this.queue = [...this.queue.filter((_, index) => index !== this.front)];
+      this.queue = this.queue.filter((_, index) => index !== this.front);
       this.front = (this.front + 1) % this.length;
       return item;
     } else {
