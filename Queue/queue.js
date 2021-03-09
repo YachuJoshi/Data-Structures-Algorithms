@@ -1,26 +1,27 @@
 class Queue {
-  constructor(data) {
+  constructor({ data, maxLength = 6 }) {
     this.queue = [];
     this.front = -1;
-    this.rear = -1;
-    this.length = 6;
+    this.length = maxLength;
     this.createQueue(data);
   }
 
   createQueue(data) {
     if (Array.isArray(data)) {
-      this.queue = [...data].filter((_, index) => index <= this.length - 1);
+      this.queue = data.slice(0, this.length);
       this.front = 0;
-      this.rear = this.queue.length - 1;
     } else {
       throw new Error("Data must be array/list.");
     }
   }
 
+  get rear() {
+    return this.queue.length - 1;
+  }
+
   enqueue(item) {
     if (!this.isFull()) {
       this.queue.push(item);
-      this.rear++;
     } else {
       throw new Error("Queue is full.");
     }
@@ -42,7 +43,7 @@ class Queue {
   }
 
   isFull() {
-    return this.rear === this.length - 1;
+    return this.queue.length === this.length;
   }
 
   peek() {

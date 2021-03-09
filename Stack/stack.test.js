@@ -10,20 +10,21 @@ describe("initalize", () => {
 
 describe("peek", () => {
   test("empty stack", () => {
-    const stack = new Stack([]);
+    const stack = new Stack({ data: [] });
     expect(stack.isEmpty()).toBeTruthy();
     expect(stack.peek()).toBeUndefined();
   });
 
   test("pre-filled stack", () => {
-    const stack = new Stack([1, 2, 3, 4]);
+    const stack = new Stack({ data: [1, 2, 3, 4] });
+    expect(stack.top).toEqual(3);
     expect(stack.peek()).toEqual(4);
   });
 });
 
 describe("push", () => {
   test("stack not full", () => {
-    const stack = new Stack([1, 2, 3, 4]);
+    const stack = new Stack({ data: [1, 2, 3, 4] });
     stack.push(5);
 
     expect(stack.peek()).toEqual(5);
@@ -32,7 +33,7 @@ describe("push", () => {
   });
 
   test("full stack", () => {
-    const stack = new Stack([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+    const stack = new Stack({ data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] });
 
     expect(() => {
       stack.push(0);
@@ -45,7 +46,7 @@ describe("push", () => {
 
 describe("pop", () => {
   test("stack not empty", () => {
-    const stack = new Stack([1, 2, 3, 4]);
+    const stack = new Stack({ data: [1, 2, 3, 4] });
 
     expect(stack.pop()).toEqual(4);
     expect(stack.peek()).toEqual(3);
@@ -54,7 +55,7 @@ describe("pop", () => {
   });
 
   test("empty stack", () => {
-    const stack = new Stack([]);
+    const stack = new Stack({ data: [] });
 
     expect(() => {
       stack.pop();

@@ -10,23 +10,24 @@ describe("initialize", () => {
 
 describe("peek", () => {
   test("empty queue", () => {
-    const queue = new Queue([]);
+    const queue = new Queue({ data: [] });
 
     expect(queue.isEmpty()).toBeTruthy();
     expect(queue.peek()).toEqual(undefined);
   });
 
   test("pre-filled queue", () => {
-    const queue = new Queue([1, 2, 3, 4]);
+    const queue = new Queue({ data: [1, 2, 3, 4] });
 
-    expect(queue.isEmpty()).toBeFalsy();
     expect(queue.peek()).toEqual(1);
+    expect(queue.rear).toEqual(3);
+    expect(queue.isEmpty()).toBeFalsy();
   });
 });
 
 describe("enqueue", () => {
   test("not-full queue", () => {
-    const queue = new Queue([1, 2, 3, 4]);
+    const queue = new Queue({ data: [1, 2, 3, 4] });
 
     queue.enqueue(5);
 
@@ -36,7 +37,7 @@ describe("enqueue", () => {
   });
 
   test("full queue", () => {
-    const queue = new Queue([1, 2, 3, 4, 5, 6]);
+    const queue = new Queue({ data: [1, 2, 3, 4, 5, 6] });
 
     expect(() => {
       queue.enqueue(7);
@@ -49,7 +50,7 @@ describe("enqueue", () => {
 
 describe("dequeue", () => {
   test("non-empty queue", () => {
-    const queue = new Queue([1, 2, 3, 4]);
+    const queue = new Queue({ data: [1, 2, 3, 4] });
 
     expect(queue.dequeue()).toEqual(1);
     expect(queue.peek()).toEqual(2);
@@ -58,7 +59,7 @@ describe("dequeue", () => {
   });
 
   test("empty queue", () => {
-    const queue = new Queue([]);
+    const queue = new Queue({ data: [] });
 
     expect(() => {
       queue.dequeue();
