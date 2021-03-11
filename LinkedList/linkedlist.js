@@ -6,8 +6,8 @@ class Node {
 }
 
 class LinkedList {
-  constructor(headData) {
-    this.head = new Node(headData);
+  constructor({ head }) {
+    this.head = new Node(head);
   }
 
   unshift(data) {
@@ -21,7 +21,7 @@ class LinkedList {
     let tNode = this.head;
 
     for (let i = 1; i < position - 1; i++) {
-      if (tNode.next === null) {
+      if (!tNode.next) {
         console.log(`Can't add item at position ${position}`);
         return;
       }
@@ -41,9 +41,35 @@ class LinkedList {
     tNode.next = newNode;
   }
 
+  shift() {
+    this.head = this.head.next;
+  }
+
+  deleteAtPos(position) {
+    let tNode = this.head;
+
+    for (let i = 1; i < position - 1; i++) {
+      if (!tNode.next) {
+        console.log(`Can't remove item at position ${position}`);
+        return;
+      }
+      tNode = tNode.next;
+    }
+    tNode.next = tNode.next.next;
+  }
+
+  truncate() {
+    let tNode = this.head;
+
+    while (tNode.next.next) {
+      tNode = tNode.next;
+    }
+    tNode.next = null;
+  }
+
   list() {
     let tNode = this.head;
-    while (tNode !== null) {
+    while (tNode) {
       console.log(tNode.data);
       tNode = tNode.next;
     }

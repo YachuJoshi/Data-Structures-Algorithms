@@ -1,9 +1,9 @@
 class CircularQueue {
-  constructor(data) {
+  constructor({ data, maxLength = 6 }) {
     this.queue = [];
     this.front = -1;
     this.rear = -1;
-    this.length = 6;
+    this.length = maxLength;
     this.createQueue(data);
   }
 
