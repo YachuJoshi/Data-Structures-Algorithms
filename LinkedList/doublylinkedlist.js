@@ -1,11 +1,12 @@
 class Node {
   constructor(data) {
     this.data = data;
+    this.prev = null;
     this.next = null;
   }
 }
 
-class LinkedList {
+class DoublyLinkedList {
   constructor({ head }) {
     this.head = new Node(head);
   }
@@ -13,6 +14,7 @@ class LinkedList {
   unshift(data) {
     const newNode = new Node(data);
     newNode.next = this.head;
+    this.head.prev = newNode;
     this.head = newNode;
   }
 
@@ -27,7 +29,9 @@ class LinkedList {
       }
       tNode = tNode.next;
     }
+    tNode.next.prev = newNode;
     newNode.next = tNode.next;
+    newNode.prev = tNode;
     tNode.next = newNode;
   }
 
@@ -39,10 +43,12 @@ class LinkedList {
       tNode = tNode.next;
     }
     tNode.next = newNode;
+    newNode.prev = tNode;
   }
 
   shift() {
     this.head = this.head.next;
+    this.head.prev = null;
   }
 
   deleteAtPos(position) {
@@ -56,6 +62,7 @@ class LinkedList {
       tNode = tNode.next;
     }
     tNode.next = tNode.next.next;
+    tNode.next.prev = tNode;
   }
 
   truncate() {
@@ -64,18 +71,30 @@ class LinkedList {
     while (tNode.next.next) {
       tNode = tNode.next;
     }
+    tNode.next.prev = null;
     tNode.next = null;
   }
 
-  list() {
+  listForward() {
     let tNode = this.head;
     while (tNode) {
       console.log(tNode.data);
       tNode = tNode.next;
     }
   }
+
+  listBackward() {
+    let tNode = this.head;
+    while (tNode.next) {
+      tNode = tNode.next;
+    }
+    while (tNode) {
+      console.log(tNode.data);
+      tNode = tNode.prev;
+    }
+  }
 }
 
 module.exports = {
-  LinkedList,
+  DoublyLinkedList,
 };
