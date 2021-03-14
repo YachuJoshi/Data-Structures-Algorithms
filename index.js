@@ -17,4 +17,4 @@ const items = [3, 1, 6, 4, 7, 5, 10, 9, 14];
 items.forEach((item) => bst.insert(root, item));
 
 bst.delete(root, 3);
-console.log(root);
+console.log(bst.postorder(root));

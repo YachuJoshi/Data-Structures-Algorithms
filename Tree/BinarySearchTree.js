@@ -180,6 +180,20 @@ class BinarySearchTree {
     console.log(root.data);
     this.inorder(root.right);
   }
+
+  preorder(root) {
+    if (!root) return;
+    console.log(root.data);
+    this.preorder(root.left);
+    this.preorder(root.right);
+  }
+
+  postorder(root) {
+    if (!root) return;
+    this.postorder(root.left);
+    this.postorder(root.right);
+    console.log(root.data);
+  }
 }
 
 module.exports = {
