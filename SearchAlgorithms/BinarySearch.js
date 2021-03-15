@@ -1,11 +1,12 @@
 const binarySearchIterative = (array, key) => {
+  let sortedArray = array.sort();
   let lower = 0;
   let higher = array.length;
   let mid;
   while (lower <= higher) {
     mid = Math.floor((lower + higher) / 2);
-    if (key === array[mid]) return mid;
-    if (key < array[mid]) higher = mid - 1;
+    if (key === sortedArray[mid]) return mid;
+    if (key < sortedArray[mid]) higher = mid - 1;
     else lower = mid + 1;
   }
   return -1;
@@ -17,13 +18,14 @@ const binarySearchRecursive = (
   lower = 0,
   higher = array.length
 ) => {
+  let sortedArray = array.sort();
   let mid = Math.floor((lower + higher) / 2);
-  if (key === array[mid]) return mid;
-  if (key < array[mid]) {
-    return binarySearchRecursive(array, key, lower, mid - 1);
+  if (key === sortedArray[mid]) return mid;
+  if (key < sortedArray[mid]) {
+    return binarySearchRecursive(sortedArray, key, lower, mid - 1);
   }
-  if (key > array[mid]) {
-    return binarySearchRecursive(array, key, mid + 1, higher);
+  if (key > sortedArray[mid]) {
+    return binarySearchRecursive(sortedArray, key, mid + 1, higher);
   }
   return -1;
 };
